@@ -1,0 +1,2 @@
+class HotSpringComment < ApplicationRecord
+end

@@ -1,0 +1,59 @@
+<tbody>
+    <tr>
+      <td>
+      <%= link_to user_path(@hot_spring.user_id) do %>
+      <%= attachment_image_tag @hot_spring.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <div><%= @hot_spring.user.name %></div>
+      <% end %>
+      </td>
+      <td>
+        <%= link_to  hot_spring_path(@hot_spring.id)  do%>
+        <%= @hot_spring.title %>
+        <%end%>
+      </td>
+      <td><%= @hot_spring.body %></td>
+      <td>コメント件数：<%= @hot_spring.hot_spring_comments.count %></td>
+      <% if @hot_spring.favorited_by?(current_user) %>
+    <td>
+      <%= link_to hot_spring_favorites_path(@hot_spring), method: :delete do %>
+        ♥<%= @hot_spring.favorites.count %> いいね
+      <% end %>
+    </td>
+    <% else %>
+    <td>
+      <%= link_to hot_spring_favorites_path(@hot_spring), method: :post do %>
+        ♡<%= @hot_spring.favorites.count %> いいね
+      <% end %>
+    </td>
+  <% end %>
+      <% if @hot_spring.user.id == current_user.id %>
+      <td><%= link_to "Edit", edit_hot_spring_path(@hot_spring.id) %></td>
+      <td><%= link_to "Destroy", hot_spring_path(@hot_spring.id), method: :delete, "data-confirm" => "本当に消しますか?" %></td>
+      <% end %>
+    </tr>
+  </tbody>
+  </table>
+<div class="comments">
+
+<% @hot_spring.hot_spring_comments.each do |hot_spring_comment| %>
+  <td><%= image_tag('no_image.jpg') %></td>
+  <%= hot_spring_comment.user.name %>
+  <%= hot_spring_comment.created_at.strftime('%Y/%m/%d') %><%= hot_spring_comment.comment %>
+  <% if hot_spring_comment.user == current_user %>
+  <div class="comment-delete">
+    <td><%= link_to "削除", hot_spring_hot_spring_comment_path(hot_spring_comment.hot_spring, hot_spring_comment), method: :delete %></td>
+  </div>
+  <% end %>
+<% end %>
+</div>
+<div class="new-comment">
+<div class = "form-group">
+<%= form_with(model:[@hot_spring, @hot_spring_comment], local: true) do |f| %>
+  <td><%= f.text_area :comment, rows:'5',placeholder: "コメントをここに", class:"form-control" %></td>
+  <td><%= f.submit "送信する" %></td>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

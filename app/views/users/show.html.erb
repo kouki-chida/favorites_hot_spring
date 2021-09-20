@@ -1,0 +1,39 @@
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+<div class="row">
+  <div class="col-md-3">
+    <%= render 'users/list', hot_spring: @new_hot_spring,user: @user %>
+  </div>
+  <div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th colspan="3">
+      </th>
+    </thead>
+    <tbody>
+     <% @hot_springs.each do |hot_spring| %>
+      <tr>
+        <td>
+        <%= link_to user_path(hot_spring.user_id) do %>
+        <%= attachment_image_tag hot_spring.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+        <% end %>
+        </td>
+
+        <td>
+        <%= link_to hot_spring_path(hot_spring.id)  do%>
+           <%= hot_spring.title %>
+        <% end %>
+        </td>
+         <td><%= hot_spring.body %></td>
+      </tr>
+     <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

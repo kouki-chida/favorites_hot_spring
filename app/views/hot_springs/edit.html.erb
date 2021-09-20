@@ -1,0 +1,29 @@
+<main>
+  <p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>Editing Book</h1>
+      <%= form_with model:@hot_spring, local: true do |f| %>
+         <label for="hot_spring_title">Title</label>
+    	   <div class="form-group">
+         <%= f.text_field :title %>
+         </div>
+
+         <label for="hot_spring_opinion">Opinion</label>
+         <div class="form-group">
+         <%= f.text_area :body %>
+         </div>
+
+        <div class="form-group">
+        <%= f.submit 'Update Book' %>
+        </div>
+      <%end%>
+      <%= link_to "Show", hot_spring_path(@hot_spring) %>
+      
+      <%= link_to "Back", hot_springs_path %>
+
+      </div>
+    </div>
+  </div>
+  </main>
