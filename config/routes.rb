@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
+  get 'search' => 'hot_springs#search'
+
   resources :hot_springs, only: [:index, :show, :edit, :create, :update, :destroy]do
   resource :favorites, only: [:create, :destroy]
   resources :hot_spring_comments, only: [:create, :destroy]

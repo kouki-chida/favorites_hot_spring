@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_121255) do
+ActiveRecord::Schema.define(version: 2021_09_18_132325) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "hot_spring_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hot_spring_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "hot_spring_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hot_springs", force: :cascade do |t|
+    t.integer "hot_spring_id"
+    t.integer "user_id"
+    t.string "profile_image_url"
+    t.string "name"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
