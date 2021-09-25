@@ -3,16 +3,16 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  		<h1>Editing Book</h1>
+  		<h1>編集画面</h1>
       <%= form_with model:@hot_spring, local: true do |f| %>
-         <label for="hot_spring_title">Title</label>
+         <label for="hot_spring_title">温泉名</label>
     	   <div class="form-group">
-         <%= f.text_field :title %>
+         <%= f.text_field :name %>
          </div>
 
-         <label for="hot_spring_opinion">Opinion</label>
+         <label for="hot_spring_opinion">説明文</label>
          <div class="form-group">
-         <%= f.text_area :body %>
+         <%= f.text_area :text %>
          </div>
 
         <div class="form-group">

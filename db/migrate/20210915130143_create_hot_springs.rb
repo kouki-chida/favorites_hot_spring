@@ -4,7 +4,7 @@ class CreateHotSprings < ActiveRecord::Migration[5.2]
       t.integer "hot_spring_id"
       t.integer "user_id"
       t.string "profile_image_url"
-      t.string "name"
+      t.string "hot_spring_name"
       t.text "text"
       
       t.timestamps

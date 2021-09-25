@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_09_18_132325) do
     t.integer "hot_spring_id"
     t.integer "user_id"
     t.string "profile_image_url"
-    t.string "name"
+    t.string "hot_spring_name"
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2021_09_18_132325) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.string "profile_image_id"
+    t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

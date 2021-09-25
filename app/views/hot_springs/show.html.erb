@@ -8,10 +8,10 @@
       </td>
       <td>
         <%= link_to  hot_spring_path(@hot_spring.id)  do%>
-        <%= @hot_spring.title %>
+        <%= @hot_spring. %>
         <%end%>
       </td>
-      <td><%= @hot_spring.body %></td>
+      <td><%= @hot_spring.text %></td>
       <td>コメント件数：<%= @hot_spring.hot_spring_comments.count %></td>
       <% if @hot_spring.favorited_by?(current_user) %>
     <td>
