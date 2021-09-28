@@ -1,0 +1,5 @@
+<!--<デバッグ>-->
+console.log("create");
+console.log("favorite_<%= @hot_spring.id %>");
+
+$("#favorite_<%= @hot_spring.id %>").html("<%= j(render 'favorites/favorite', hot_spring: @hot_spring) %>");

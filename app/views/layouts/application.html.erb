@@ -10,6 +10,7 @@
   </head>
 
  <body>
+    <!--ヘッダー-->
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -27,7 +28,7 @@
                     <%= link_to 'マイページ', user_path(current_user), class: "fas fa-home nav-link text-light" %>
                   </li>
                   <li>
-                    <%= link_to '温泉一覧', hot_springs_path, class: "fas fa-book-open nav-link text-lightfas fa-users nav-link text-light" %>
+                    <%= link_to '温泉一覧', hot_springs_path, class: "fas fa-hot-tub nav-link text-lightfas fa-users nav-link text-light" %>
                   </li>
                   <li>
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
@@ -46,19 +47,33 @@
           </div>
         </div>
       </nav>
+      <!--検索機能-->
+      <div class="row">
+        <div class="col-xs-0 col-xs-offset-12 text-center" style="margin-top: 25px;">
+          <% if user_signed_in? %>
+            <%= form_with url:search_path, method: :get, local: true do |f| %>
+              <%= f.text_field 'search[value]' %>
+              <%= f.select 'search[model]', options_for_select({ "User" => "user", "HotSpring" => "hot_spring" }) %>
+              <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
+              <%= f.submit :"検索" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
 
     </header>
 
 
     <%= yield %>
-   <footer>
-    <div class="container mt-5">
-      <div class="row">
-        <div class="mx-auto">
-          <p>CopyRight Infratop.inc</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+   <!--フッター-->
+  <!-- <footer class= "bg-dark text-white fixed-bottom">-->
+  <!--  <div class="container mt-5">-->
+  <!--    <div class="row">-->
+  <!--      <div class="mx-auto">-->
+  <!--        <p>FavoritesHotSpring</p>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</footer>-->
  </body>
 </html>

@@ -4,13 +4,13 @@
       <tbody>
        <tr>
        <th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></th>
-        </tr>
-        <tr>
+       </tr>
+       <tr>
           <th>ユーザー名</th>
           <th><%= user.name %></th>
         </tr>
         <tr>
-          <th>introduction</th>
+          <th>ユーザー詳細</th>
           <th><%= user.introduction %><th>
         </tr>
       </tbody>
@@ -24,11 +24,11 @@
 
       <div class="form-group">
         <label for="hot_spring_title">温泉名</label>
-        <%= f.text_field :title, class: 'form-control hot_spring_title' %>
+        <%= f.text_field :hot_spring_name, class: 'form-control hot_spring_hot_spring_name' %>
       </div>
       <div class="form-group">
       <label for="hot_spring_opinion">おすすめポイント</label>
-      <textarea class="form-control hot_spring_body" name="hot_spring" id="hot_spring_body"></textarea>
+      <textarea class="form-control hot_spring_text" name="hot_spring[text]" id="hot_spring_text"></textarea>
       </div>
       <div class="form-group">
         <input type="submit" name="commit" value="投稿" class="btn btn-success" data-disable-with="投稿">

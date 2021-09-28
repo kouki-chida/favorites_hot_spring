@@ -7,7 +7,7 @@
       <%= form_with model:@hot_spring, local: true do |f| %>
          <label for="hot_spring_title">温泉名</label>
     	   <div class="form-group">
-         <%= f.text_field :name %>
+         <%= f.text_field :hot_spring_name %>
          </div>
 
          <label for="hot_spring_opinion">説明文</label>
@@ -20,7 +20,7 @@
         </div>
       <%end%>
       <%= link_to "Show", hot_spring_path(@hot_spring) %>
-      
+
       <%= link_to "Back", hot_springs_path %>
 
       </div>

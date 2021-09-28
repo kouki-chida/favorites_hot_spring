@@ -1,4 +1,6 @@
 class HotSpringsController < ApplicationController
+before_action :authenticate_user!
+
 
 def index
  @new_hot_spring = HotSpring.new
@@ -25,13 +27,13 @@ end
 
 def create
       @new_hot_spring = HotSpring.new(hot_spring_params)
-      @hot_spring.user_id = current_user.id
+      @new_hot_spring.user_id = current_user.id
       @user =current_user
-    if @hot_spring.save
-      flash[:notice] = "You have created book successfully."
-      redirect_to hot_spring_path(@hot_spring.id)
+    if @new_hot_spring.save
+      flash[:notice] = "You have created hot_spring successfully."
+      redirect_to hot_spring_path(@new_hot_spring.id)
     else
-      @hot_springs = hot_spring.all
+      @hot_springs = HotSpring.all
       flash.now[:danger] = "error"
       render :index
     end
@@ -39,9 +41,9 @@ end
 
 def update
        @hot_spring = HotSpring.find(params[:id])
-       if @book.update(book_params)
+       if @hot_spring.update(hot_spring_params)
         flash[:notice] = "You have updated book successfully."
-        redirect_to book_path(@book.id)
+        redirect_to hot_spring_path(@hot_spring.id)
        else
         flash.now[:danger] = "error"
         render :edit

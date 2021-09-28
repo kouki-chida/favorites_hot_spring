@@ -1,0 +1,14 @@
+  コメント件数：<%= hot_spring.hot_spring_comments.count %>
+  <% hot_spring.hot_spring_comments.each do |hot_spring_comment| %>
+    <%= image_tag('no_image.jpg') %>
+    <%= hot_spring_comment.user.name %>
+    <%= hot_spring_comment.created_at.strftime('%Y/%m/%d') %>
+    <%= hot_spring_comment.comment %>
+    <% if hot_spring_comment.user == current_user %>
+
+    <%= link_to "削除", hot_spring_hot_spring_comment_path(hot_spring_comment.hot_spring, hot_spring_comment), method: :delete, remote: true %>
+
+    <% end %>
+  <% end %>
+
+</div>

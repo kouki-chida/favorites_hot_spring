@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
   def index
     @users =User.all
-    @hot_spring = HotSpring.new
+    @new_hot_spring = HotSpring.new
     @user = current_user
   end
 
   def show
     @new_hot_spring = HotSpring.new
     @user =User.find(params[:id])
+    @hot_springs =@user.hot_springs
   end
 
   def edit
